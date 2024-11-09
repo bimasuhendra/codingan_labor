@@ -1,0 +1,35 @@
+CREATE DATABASE sistem_pengajuan_judul;
+
+USE sistem_pengajuan_judul;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100),
+    nim CHAR(10) NOT NULL UNIQUE,
+    password VARCHAR(10) NOT NULL,
+    role ENUM('mahasiswa', 'prodi', 'staff_prodi') NOT NULL
+);
+
+CREATE TABLE pengajuan_judul (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    judul VARCHAR(100),
+    abstrak TEXT NOT NULL,
+    status ENUM('diajukan', 'diterima', 'ditolak') DEFAULT 'diajukan',
+    alasan_penolakan TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE pembayaran (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    bukti_pembayaran VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE surat_pengantar (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    file_surat VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);

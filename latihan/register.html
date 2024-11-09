@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Prodi/Staff Prodi</title>
+</head>
+<body>
+    <h1>Registrasi Akun Prodi/Staff Prodi</h1>
+    <form action="register.php" method="post">
+        <label>Nama:</label>
+        <input type="text" name="nama" required><br>
+
+        <label>NIM (10 digit):</label>
+        <input type="text" name="nim" required><br>
+
+        <label>Password (5-10 karakter):</label>
+        <input type="password" name="password" required><br>
+
+        <label>Role:</label>
+        <select name="role" required>
+            <option value="mahasiswa">Mahasiswa</option>
+            <option value="prodi">Prodi</option>
+            <option value="staff_prodi">Staff Prodi</option>
+        </select><br>
+
+        <button type="submit">Register</button>
+    </form>
+    <label>sudah punya akun?<a href="login.php">login</a></label>
+</body>
+</html>
